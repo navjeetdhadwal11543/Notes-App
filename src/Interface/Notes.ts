@@ -5,6 +5,8 @@ export interface Note {
   date: string
 }
 export interface NotesProps {
-  note: Note[]
   setNote: React.Dispatch<React.SetStateAction<Note[]>>
+}
+export interface NoteListProps {
+  note: Note[]
 }

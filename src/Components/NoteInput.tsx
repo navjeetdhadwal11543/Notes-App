@@ -10,20 +10,18 @@ import Typography from '@mui/material/Typography'
 const NoteInput: React.FC<NotesProps> = ({ setNote }) => {
   const [titleInput, setTitleInput] = useState<string>('')
   const [contentInput, setContentInput] = useState<string>('')
-  const [nextId, setNextId] = useState<number>(1)
 
   const handleInput = () => {
     if (titleInput.trim() === '' && contentInput.trim() === '') return
 
     const newNote: Note = {
-      id: nextId,
+      id: Date.now(),
       title: titleInput,
       content: contentInput,
-      date: new Date().toLocaleString(),
+      date: new Date().toString(),
     }
     setNote((prev) => [...prev, newNote])
 
-    setNextId((prev) => prev + 1)
     console.log(newNote)
 
     setTitleInput('')
@@ -33,10 +31,12 @@ const NoteInput: React.FC<NotesProps> = ({ setNote }) => {
     <Box>
       <Card
         sx={{
-          p: 2,
-          borderRadius: 2,
-          bgcolor: 'rgba(255,255,255,0.9)',
-          boxShadow: 3,
+          p: 3,
+          borderRadius: 3,
+          bgcolor: '#f8fafc',
+          border: '1px solid #c7d2fe',
+          boxShadow:
+            '0 40px 80px rgba(79, 70, 229, 0.6), 0 25px 45px rgba(79, 70, 229, 0.45), 0 12px 20px rgba(0, 0, 0, 0.25), 0 4px 8px rgba(0, 0, 0, 0.2)',
           mx: 'auto',
         }}
       >
@@ -59,17 +59,21 @@ const NoteInput: React.FC<NotesProps> = ({ setNote }) => {
               '& .MuiOutlinedInput-root': {
                 height: 50,
                 borderRadius: 2,
-                borderColor: 'black',
                 mb: 2,
-                color: 'black ',
+                color: 'black',
                 bgcolor: '#ffffff',
               },
               '& .MuiOutlinedInput-notchedOutline': {
-                borderColor: 'black',
+                borderColor: '#94a3b8',
               },
+              '& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline':
+                {
+                  borderColor: '#6366f1',
+                },
               '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline':
                 {
-                  borderColor: 'black',
+                  borderColor: '#4f46e5',
+                  borderWidth: '2px',
                 },
             }}
           />
@@ -93,20 +97,24 @@ const NoteInput: React.FC<NotesProps> = ({ setNote }) => {
               '& .MuiOutlinedInput-root': {
                 height: 50,
                 borderRadius: 2,
-                borderColor: 'black',
                 mb: 2,
-                color: 'black ',
+                color: 'black',
                 bgcolor: '#ffffff',
               },
               '& .MuiOutlinedInput-input': {
                 padding: '12px 14px',
               },
               '& .MuiOutlinedInput-notchedOutline': {
-                borderColor: 'black',
+                borderColor: '#94a3b8',
               },
+              '& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline':
+                {
+                  borderColor: '#6366f1',
+                },
               '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline':
                 {
-                  borderColor: 'black',
+                  borderColor: '#4f46e5',
+                  borderWidth: '2px',
                 },
             }}
           />
@@ -121,19 +129,19 @@ const NoteInput: React.FC<NotesProps> = ({ setNote }) => {
             borderRadius: 3,
             textTransform: 'none',
 
-            background: 'linear-gradient(135deg, #f7d774, #E3B23C)',
-            color: '#1a1a1a',
+            background: 'linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%)',
+            color: '#ffffff',
             fontWeight: 700,
             letterSpacing: 0.5,
 
-            boxShadow: '0 4px 14px rgba(227,178,60,0.4)',
+            boxShadow: '0 4px 14px rgba(79, 70, 229, 0.4)',
 
             transition: 'all 0.25s ease',
 
             '&:hover': {
-              background: 'linear-gradient(135deg, #E3B23C, #c8962b)',
+              background: 'linear-gradient(135deg, #4338ca 0%, #6d28d9 100%)',
               transform: 'translateY(-3px)',
-              boxShadow: '0 6px 20px rgba(227,178,60,0.6)',
+              boxShadow: '0 6px 20px rgba(79, 70, 229, 0.55)',
             },
 
             '&:active': {
